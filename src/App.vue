@@ -29,10 +29,10 @@ export default {
         },
         flag(element){
             if(element==="en"){
-                return console.log('Bandiera inglese')
+                return './public/img/uk_flag.jpeg'
             }
             else if (element==="it"){
-                return console.log('Bandiera italiana')
+                return './public/img/ita_flag.jpeg'
             }
             else {
                 console.log('Altro')
@@ -55,10 +55,10 @@ export default {
     <div v-if="movies.length">
         <!-- Ciclo V-for per stampare a schermo le info del film  -->
         <div v-for="movie in movies">
-            <h3>Il Titolo del film è : <span>{{title }}</span> .</h3>
+            <h3>Il Titolo del film è : <span>{{movie.title }}</span> .</h3>
             <ul>
                 <li>Il titolo originale del film è : {{ movie.original_title }}</li>
-                <li>La lingua originale del film è : {{flag(movie.original_language)}}</li>
+                <li>La lingua originale del film è : <div id="img"><img :src="flag(movie.original_language)" alt=""></div></li>
                 <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
             </ul>
         </div>
@@ -81,6 +81,14 @@ div{
     }
     ul{
         list-style: none;
+    }
+    #img{
+        width: 150px;
+        height: 150px;
+        img{
+            width: 100%;
+            display: block;
+        }
     }
 }
 </style>
