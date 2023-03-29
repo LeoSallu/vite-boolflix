@@ -7,24 +7,36 @@ export default {
         return {
             store,
             movieUrl: 'https://api.themoviedb.org/3/search/movie?api_key=5c9194b00bb5ab97cca5858e87b81858',
+            tvUrl:'https://api.themoviedb.org/3/search/tv?api_key=5c9194b00bb5ab97cca5858e87b81858',
             title: '',
             originalTitle: '',
             language:'' ,
             score: 0,
-            movies: []
+            moviesAndSeries: []
         }
     },
     methods: {
         searchMovies() {
             axios.get(this.movieUrl, {
                 params: {
-                    api_key: this.api_key,
                     query: this.title,
                     language:this.language
                 },
             })
                 .then(response => {
-                    this.movies = response.data.results;
+                    this.moviesAndSeries = response.data.results;
+                })
+        },
+        searchTv() {
+            axios.get(this.tvUrl, {
+                params: {
+                    query: this.title,
+                    language:this.language
+                },
+            })
+                .then(response => {
+                    this.moviesAndSeries = response.data.results;
+                    console.log(response)
                 })
         },
         flag(element){
@@ -41,6 +53,7 @@ export default {
     },
     created() {
         this.searchMovies()
+        this.searchTv()
     }
 }
 </script>
@@ -52,9 +65,9 @@ export default {
         <button type="submit">Search</button>
     </form>
     <!-- /Form per far digitare il film da cercare  -->
-    <div v-if="movies.length">
+    <div v-if="moviesAndSeries.length">
         <!-- Ciclo V-for per stampare a schermo le info del film  -->
-        <div v-for="movie in movies">
+        <div v-for="movie in moviesAndSeries">
             <h3>Il Titolo del film è : <span>{{movie.title }}</span> .</h3>
             <ul>
                 <li>Il titolo originale del film è : {{ movie.original_title }}</li>
