@@ -39,16 +39,31 @@ export default {
         <button type="submit">Search</button>
     </form>
     <div v-if="movies.length">
-        <p>{{ movies[0].original_title }}</p>
+        <div v-for="movie in movies">
+            <h3>{{ movie.title }}</h3>
+            <ul>
+                <li>Il titolo originale del film è : {{ movie.original_title }}</li>
+                <li>La lingua originale del film è : {{ movie.original_language }}</li>
+                <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
+            </ul>
+        </div>
     </div>
     <div v-else>
-        <p>Nessun Risultato</p>
-        <p>Prova a cercare quaclos'altro</p>
+        <p>Nessun Risultato... prova a cercare qualcos'altro</p>
+        
     </div>
 </template>
 <!-- My Scss -->
 <style lang="scss" scoped>
 form {
     display: flex;
+}
+div{
+    h3{
+        color: pink;
+    }
+    ul{
+        list-style: none;
+    }
 }
 </style>
