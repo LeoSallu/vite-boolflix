@@ -49,7 +49,7 @@ export default {
 <!-- My Html -->
 <template>
     <!-- Form per far digitare il film da cercare  -->
-    <form @submit.prevent="searchMovie">
+    <form @submit.prevent="searchAll">
         <input type="text" v-model="store.searchKey">
         <button type="submit">Search</button>
     </form>

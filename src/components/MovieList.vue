@@ -2,11 +2,11 @@
 import { store } from '../store';
 import CountryFlag from 'vue-country-flag-next';
 export default {
-    components:{
+    components: {
         CountryFlag
     },
-    data(){
-        return{
+    data() {
+        return {
             store
         }
     },
@@ -31,12 +31,21 @@ export default {
     <div v-if="store.moviesAndSeries.length">
         <!-- Ciclo V-for per stampare a schermo le info del film  -->
         <div v-for="movie in store.moviesAndSeries">
-            <h3>Hai cercato  : <span>{{ movie.title }}</span> .</h3>
-            <ul>
-                <li>Il titolo originale è : {{ movie.original_title }}</li>
-                <li>La lingua originale è : <country-flag :country=flag(movie.original_language) size='small'/></li>
-                <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
-            </ul>
+            <div v-if="movie.title === store.searchKey">
+                <h3>Hai cercato : <span>{{ movie.title }}</span> .</h3>
+                <ul>
+                    <li>Il titolo originale è : {{ movie.original_title }}</li>
+                    <li>La lingua originale è : <country-flag :country=flag(movie.original_language) size='small' /></li>
+                    <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
+                </ul>
+            </div>
+            <div v-else-if="movie.name === store.searchKey">
+                <ul>
+                    <li>Il titolo originale è : {{ movie.original_name }}</li>
+                    <li>La lingua originale è : <country-flag :country=flag(movie.original_language) size='small' /></li>
+                    <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
+                </ul>
+            </div>
         </div>
         <!-- /Ciclo V-for per stampare a schermo le info del film  -->
     </div>
