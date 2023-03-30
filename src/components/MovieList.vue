@@ -1,18 +1,40 @@
 <script>
+import { store } from '../store';
+import CountryFlag from 'vue-country-flag-next';
 export default {
-
+    components:{
+        CountryFlag
+    },
+    data(){
+        return{
+            store
+        }
+    },
+    computed: {
+        flag() {
+            return (element) => {
+                switch (element) {
+                    case 'en':
+                        return 'gb';
+                    case 'it':
+                        return 'it';
+                    default:
+                        return element;
+                }
+            }
+        }
+    }
 }
 
 </script>
 <template>
-    <div v-if="moviesAndSeries.length">
+    <div v-if="store.moviesAndSeries.length">
         <!-- Ciclo V-for per stampare a schermo le info del film  -->
-        <div v-for="movie in moviesAndSeries">
-            <h3>Il Titolo del film è : <span>{{ movie.title }}</span> .</h3>
+        <div v-for="movie in store.moviesAndSeries">
+            <h3>Hai cercato  : <span>{{ movie.title }}</span> .</h3>
             <ul>
-                <li>Il titolo originale del film è : {{ movie.original_title }}</li>
-                <li>La lingua originale del film è : <div id="img"><img :src="flag(movie.original_language)" alt=""></div>
-                </li>
+                <li>Il titolo originale è : {{ movie.original_title }}</li>
+                <li>La lingua originale è : <country-flag :country=flag(movie.original_language) size='small'/></li>
                 <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
             </ul>
         </div>
@@ -24,3 +46,14 @@ export default {
     </div>
     <!-- /Messaggio in caso di nessun risultato  -->
 </template>
+<style lang="scss" scoped>
+div {
+    span {
+        color: pink;
+    }
+
+    ul {
+        list-style: none;
+    }
+}
+</style>
