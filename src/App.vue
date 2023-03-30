@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { store } from './store';
 import MovieList from './components/MovieList.vue';
-import { createApp } from 'vue';
+import { createApp, pushScopeId } from 'vue';
 export default {
     components: {
         MovieList
@@ -23,7 +23,8 @@ export default {
                 }
             })
                 .then((response) => {
-                    this.store.moviesAndSeries = response.data.results
+                    this.store.moviesAndSeries = response.data.results,
+                    this.searchTv()
                 })
         },
         searchTv() {
@@ -35,12 +36,13 @@ export default {
                 }
             })
                 .then((response) => {
-                    this.store.moviesAndSeries = response.data.results
+                    response.data.results.forEach(element => {
+                        this.store.moviesAndSeries.push(element)
+                    });
                 })
         },
         searchAll() {
             this.searchMovie();
-            this.searchTv();
         }
     }
 }
