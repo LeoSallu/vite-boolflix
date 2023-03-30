@@ -13,6 +13,9 @@ export default {
     methods:{
         vote(element){
             return Math.ceil( element/ 2);
+        },
+        getPath(element){
+            return element = store.img_url + element;
         }
     },
     computed: {
@@ -38,6 +41,9 @@ export default {
             <!-- Lista Film  -->   
             <div v-if="item.title">
                 <h3>Hai cercato : <span>{{item.title}}</span> .</h3>
+                <div id="img">
+                    <img :src= getPath(item.poster_path) alt="">
+                </div>
                 <ul>
                     <li>Il titolo originale del film è : {{ item.original_title }}</li>
                     <li>La lingua originale del film è : <country-flag :country=flag(item.original_language) size='small' /></li>
@@ -50,6 +56,9 @@ export default {
             <!-- Lista Serie  -->
             <div v-else-if="item.name">
                 <h3>Hai cercato : <span>{{item.name}}</span> .</h3>
+                <div id="img">
+                    <img :src=getPath(item.poster_path) alt="">
+                </div>
                 <ul>
                     <li>Il titolo originale della serie è : {{ item.original_name }}</li>
                     <li>La lingua originale della serie è : <country-flag :country=flag(item.original_language) size='small' /></li>
