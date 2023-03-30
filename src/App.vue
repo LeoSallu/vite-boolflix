@@ -2,42 +2,38 @@
 <script>
 import axios from 'axios';
 import { store } from './store';
+import MovieList from './components/MovieList.vue';
 export default {
+    components:{
+        MovieList
+    },
     data() {
         return {
             store,
             movieUrl: 'https://api.themoviedb.org/3/search/movie?api_key=5c9194b00bb5ab97cca5858e87b81858',
-            tvUrl:'https://api.themoviedb.org/3/search/tv?api_key=5c9194b00bb5ab97cca5858e87b81858',
-            title: '',
-            originalTitle: '',
-            language:'' ,
-            score: 0,
-            moviesAndSeries: []
+            tvUrl:'https://api.themoviedb.org/3/search/tv?api_key=5c9194b00bb5ab97cca5858e87b81858'          
         }
     },
     methods: {
-        searchMovies() {
-            axios.get(this.movieUrl, {
-                params: {
-                    query: this.title,
-                    language:this.language
-                },
+        search(){
+            axios.get(this.store.config.movieUrl,{
+                params:{
+                    api_key:this.store.config.api_key,
+                    query:this.store.searchKey
+                }
             })
-                .then(response => {
-                    this.moviesAndSeries = response.data.results;
-                })
-        },
-        searchTv() {
-            axios.get(this.tvUrl, {
-                params: {
-                    query: this.title,
-                    language:this.language
-                },
+            .then((response)=>{
+                this.store.moviesAndSeries =response.data.results
+            }),
+            axios.get(this.store.config.tvUrl,{
+                params:{
+                    api_key:this.store.config.api_key,
+                    query:this.store.searchKey
+                }
             })
-                .then(response => {
-                    this.moviesAndSeries = response.data.results;
-                    console.log(response)
-                })
+            .then((response)=>{
+                this.store.moviesAndSeries =response.data.results
+            })
         },
         flag(element){
             if(element==="en"){
@@ -64,24 +60,7 @@ export default {
         <input type="text" v-model="title">
         <button type="submit">Search</button>
     </form>
-    <!-- /Form per far digitare il film da cercare  -->
-    <div v-if="moviesAndSeries.length">
-        <!-- Ciclo V-for per stampare a schermo le info del film  -->
-        <div v-for="movie in moviesAndSeries">
-            <h3>Il Titolo del film è : <span>{{movie.title }}</span> .</h3>
-            <ul>
-                <li>Il titolo originale del film è : {{ movie.original_title }}</li>
-                <li>La lingua originale del film è : <div id="img"><img :src="flag(movie.original_language)" alt=""></div></li>
-                <li>Il voto della critica del film è : {{ movie.vote_average }}</li>
-            </ul>
-        </div>
-        <!-- /Ciclo V-for per stampare a schermo le info del film  -->
-    </div>
-    <!-- Messaggio in caso di nessun risultato  -->
-    <div v-else>
-        <p>Nessun Risultato... prova a cercare qualcos'altro</p>
-    </div>
-    <!-- /Messaggio in caso di nessun risultato  -->
+    <MovieList />
 </template>
 <!-- My Scss -->
 <style lang="scss" scoped>
