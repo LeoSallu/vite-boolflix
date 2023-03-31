@@ -20,7 +20,8 @@ export default {
 </script>
 <!-- My Html -->
 <template>
-        <header class="d-flex justify-content-between">
+    <div id="bg">
+        <header class="d-flex justify-content-between container rounded">
             <Title />
             <!-- Form per far digitare il film da cercare  -->
             <Search />
@@ -29,14 +30,21 @@ export default {
             <!-- Lista dei film e serie  -->
             <ShowList />
         </main>
+    </div>
 </template>
 <!-- My Scss -->
 <style lang="scss" scoped>
-.container{
+@use './assets-styles/_partials/variable.scss' as *;
+
+#bg{
     background-color: #343E3D;
     height: 100vh;
-    header{
-        background-color: red;
-    }
+    header {
+        background-color:$primary;
+       }
+    main{
+        overflow-y: auto;
+        background-color: #343E3D;
+       }
 }
 </style>

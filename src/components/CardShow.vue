@@ -42,22 +42,20 @@ export default {
 </script>
 <template>
     <article>
-            <h3>Hai cercato : <span>{{ info.title ||info.name}}</span></h3>
-            <div id="img">
-                <img :src=getPath(info.poster_path) :alt="info.title+'.png'">
+        <img class="card-img-top" :src=getPath(info.poster_path) :alt="info.title + '.png'">
+        <div class="card-body">
+            <h5 class="card-title">Hai cercato : <span>{{ info.title || info.name }}</span></h5>
+            <div class="card-text">
+                <h6>Il titolo originale è : <span>{{ info.original_title || info.original_name }}</span></h6>
+                <p>La lingua originale è : <country-flag :country=flag(info.original_language) size='small' /></p>
+                <p>Il voto della critica è
+                    <font-awesome-icon icon="fa-solid fa-star" v-for="n in vote(info.vote_average)" />
+                    <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - vote(info.vote_average)" />
+                </p>
             </div>
-            <h4>Il titolo originale è : <span>{{ info.original_title||info.original_name }}</span></h4>
-            <p>La lingua originale è : <country-flag :country=flag(info.original_language) size='small' /></p>
-            <p>Il voto della critica è 
-                <font-awesome-icon icon="fa-solid fa-star" v-for="n in vote(info.vote_average)" />
-                <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - vote(info.vote_average)" />
-            </p>
+        </div>
     </article>
 </template>
 <style lang="scss" scoped>
-div {
-    span {
-        color: pink;
-    }
-}
+
 </style>
