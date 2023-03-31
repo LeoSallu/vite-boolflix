@@ -38,6 +38,7 @@ export default {
 
 #bg{
     background-color: #343E3D;
+    height: 100vh;
     header {
         background-color:$primary;
        }

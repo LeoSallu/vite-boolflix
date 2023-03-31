@@ -44,7 +44,7 @@ export default {
     <nav class="navbar bg-primary">
         <div class="container-fluid">
             <form @submit.prevent="search" class="d-flex" role="search" >
-                <input class="form-control me-2" type="search" placeholder="Cerca una serie tv o un film" v-model="store.searchKey">
+                <input class="form-control me-3 px-5" type="search" placeholder="Cosa guardiamo ?" v-model="store.searchKey">
                 <button type="submit" class="btn btn-secondary">Cerca</button>            
             </form>
         </div>

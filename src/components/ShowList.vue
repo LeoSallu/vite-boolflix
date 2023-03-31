@@ -21,12 +21,13 @@ export default {
             </div>
         </div>
         <!-- Messaggio in caso di nessun risultato  -->
-        <div v-else class="d-flex mt-5">
+        <div v-else class="d-flex justify-content-center mt-5">
             <div class="alert alert-warning text-center" role="alert">
-                Nessun risultato... prova a cercare di nuovo!
+                Nessun risultato...  prova a cercare di nuovo!
             </div>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
+@use '../assets-styles/_partials/variable.scss' as *;
 </style>
