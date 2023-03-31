@@ -1,0 +1,7 @@
+@use './_partials/reset.scss' as *;
+@use './_partials/variable.scss' as *;
+@import "../../node_modules//bootstrap/scss/bootstrap.scss";
+
+body{
+    font-family: "Montserrat";
+}

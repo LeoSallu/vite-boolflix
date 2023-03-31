@@ -1,13 +1,14 @@
 <!-- My Js -->
 <script>
 import { store } from './store';
+import Title from './components/Title.vue';
 import Search from './components/Search.vue';
 import ShowList from './components/ShowList.vue';
 import { createApp } from 'vue';
 export default {
     components: {
-        // MovieList,
         ShowList,
+        Title,
         Search
     },
     data() {
@@ -19,18 +20,23 @@ export default {
 </script>
 <!-- My Html -->
 <template>
-    <!-- Form per far digitare il film da cercare  -->
-    <Search />
-    <!-- Lista dei film e serie  -->
-    <ShowList />
+        <header class="d-flex justify-content-between">
+            <Title />
+            <!-- Form per far digitare il film da cercare  -->
+            <Search />
+        </header>
+        <main>
+            <!-- Lista dei film e serie  -->
+            <ShowList />
+        </main>
 </template>
 <!-- My Scss -->
 <style lang="scss" scoped>
-form {
-    display: flex;
-}
-
-ul {
-    list-style: none;
+.container{
+    background-color: #343E3D;
+    height: 100vh;
+    header{
+        background-color: red;
+    }
 }
 </style>

@@ -14,14 +14,17 @@ export default {
         info: Object
     },
     methods: {
+        // Funzione per arrotondare il voto a 5 
         vote(element) {
             return Math.ceil(element / 2);
         },
+        // Funzione per ottenere la path del img dal api e comunicarla al template 
         getPath(element) {
             return element = store.img_url + element;
         }
     },
     computed: {
+        // Funzione per correggere le path delle flag 
         flag() {
             return (element) => {
                 switch (element) {

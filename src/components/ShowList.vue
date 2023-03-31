@@ -13,6 +13,7 @@ export default {
 }
 </script>
 <template>
+    <!-- Lista degli show presi dal API  -->
     <div v-if="store.moviesAndSeries.length">
         <ul>
             <li v-for="show in store.moviesAndSeries">
@@ -25,4 +26,8 @@ export default {
         <p>Nessun Risultato... prova a cercare qualcos'altro</p>
     </div>
 </template>
-<style></style>
+<style lang="scss" scoped>
+ul {
+    list-style: none;
+}
+</style>

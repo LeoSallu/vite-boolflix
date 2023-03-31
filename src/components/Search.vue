@@ -8,7 +8,8 @@ export default{
         }
     },
     methods: {
-        searchMovie() {
+        // Chiamata al API Generica
+        search() {
             axios.get(this.store.config.movieUrl, {
                 params: {
                     api_key: this.store.config.api_key,
@@ -18,10 +19,10 @@ export default{
             })
                 .then((response) => {
                     this.store.moviesAndSeries = response.data.results,
-                    this.searchTv()
+                    this.tvApi()
                 })
         },
-        searchTv() {
+        tvApi() {
             axios.get(this.store.config.tvUrl, {
                 params: {
                     api_key: this.store.config.api_key,
@@ -40,8 +41,13 @@ export default{
 </script>
 <template>
     <!-- Form per far digitare il film da cercare  -->
-    <form @submit.prevent="searchMovie">
+    <form @submit.prevent="search">
         <input type="text" v-model="store.searchKey">
         <button type="submit">Search</button>
     </form>
 </template>
+<style lang="scss" scoped>
+    form {
+    display: flex;
+}
+</style>
