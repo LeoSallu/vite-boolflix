@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <template>
-    <article>
+    <div class="card my-2" >
         <img class="card-img-top" :src=getPath(info.poster_path) :alt="info.title + '.png'">
         <div class="card-body">
             <h5 class="card-title">Hai cercato : <span>{{ info.title || info.name }}</span></h5>
@@ -54,7 +54,7 @@ export default {
                 </p>
             </div>
         </div>
-    </article>
+    </div>
 </template>
 <style lang="scss" scoped>
 
