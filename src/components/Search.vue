@@ -34,16 +34,13 @@ export default{
                         this.store.moviesAndSeries.push(element)
                     });
                 })
-        },
-        searchAll() {
-            this.searchMovie();
         }
     }
 }
 </script>
 <template>
     <!-- Form per far digitare il film da cercare  -->
-    <form @submit.prevent="searchAll">
+    <form @submit.prevent="searchMovie">
         <input type="text" v-model="store.searchKey">
         <button type="submit">Search</button>
     </form>
