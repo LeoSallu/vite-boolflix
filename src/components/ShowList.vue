@@ -21,9 +21,9 @@ export default {
             </div>
         </div>
         <!-- Messaggio in caso di nessun risultato  -->
-        <div v-else class="d-flex justify-content-center mt-5">
-            <div class="alert alert-warning text-center" role="alert">
-                Nessun risultato...  prova a cercare di nuovo!
+        <div v-else class="d-flex justify-content-center mt-5 row">
+            <div class="col-6 alert alert-warning text-center" role="alert">
+                Nessun risultato o non hai ancora cercato... prova a cercare qualcosa da vedere!
             </div>
         </div>
     </div>

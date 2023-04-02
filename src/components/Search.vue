@@ -22,6 +22,7 @@ export default {
                         this.tvApi()
                 })
         },
+        // Chiamata API serie tv 
         tvApi() {
             axios.get(this.store.config.tvUrl, {
                 params: {

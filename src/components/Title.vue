@@ -10,7 +10,7 @@
 <template>
 <nav class="navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">BOOLFLIX</a>
+    <a class="navbar-brand" href="#"><h1>BOOLFLIX</h1></a>
   </div>
 </nav>
 </template>

@@ -20,7 +20,12 @@ export default {
         },
         // Funzione per ottenere la path del img dal api e comunicarla al template 
         getPath(element) {
-            return element = store.img_url + element;
+            if(element){
+                return element = store.img_url + element;
+            }
+            else{
+                return 'https://www.ecreativeim.com/blog/wp-content/uploads/2011/05/image-not-found.jpg'
+            }
         }
     },
     computed: {
@@ -30,8 +35,12 @@ export default {
                 switch (element) {
                     case 'en':
                         return 'gb';
-                    case 'it':
-                        return 'it';
+                    case 'ja':
+                        return 'jp';
+                    case 'he':
+                        return 'il'
+                    case 'ko':
+                        return 'kr'
                     default:
                         return element;
                 }
@@ -69,7 +78,7 @@ export default {
 span{
     color: $secondary;
 }
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+// FLIP CARD 
 .flip-card {
     background-color: transparent;
     width: 100%;
@@ -77,8 +86,6 @@ span{
     border: 1px solid $primary;
     overflow: hidden;
 }
-
-/* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -86,13 +93,9 @@ span{
     transition: transform 1.5s;
     transform-style: preserve-3d;
 }
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
-
-/* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
     position: absolute;
@@ -100,10 +103,8 @@ span{
     height: 100%;
     overflow-y: auto;
     -webkit-backface-visibility: hidden;
-    /* Safari */
     backface-visibility: hidden;
 }
-/* Style the back side */
 .flip-card-back {
     background-color: $primary;
     transform: rotateY(180deg);
