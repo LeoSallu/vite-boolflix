@@ -52,7 +52,7 @@ export default {
 <template>
     <div class="card flip-card my-2">
         <div class="flip-card-inner">
-            <img class="card-img-top flip-card-front" :src=getPath(info.poster_path) :alt="info.title + '.png'">
+            <img class="card-img-top flip-card-front" :src=getPath(info.poster_path) :alt="info.title + '.jpg'">
             <div class="card-body flip-card-back">
                 <h5 class="card-title"><span>{{ info.title || info.name }}</span></h5>
                 <div class="card-text text-light">

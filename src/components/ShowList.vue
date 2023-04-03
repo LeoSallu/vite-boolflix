@@ -16,7 +16,7 @@ export default {
     <!-- Lista degli show presi dal API  -->
     <div class="container justify-content-center">
         <div v-if="store.moviesAndSeries.length" class="row">
-            <div class="col-3 card-group mt-3" v-for="show in store.moviesAndSeries">
+            <div class="col-12 col-md-6 col-lg-3 card-group mt-3" v-for="show in store.moviesAndSeries">
                 <CardShow :info="show" />
             </div>
         </div>
